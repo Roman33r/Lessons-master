@@ -93,3 +93,17 @@ class FDataBase:
             print("Ошибка добавления в бд"+ str(e))
             return False
         return True
+
+    def getUserByEmail(self, email):
+        try:
+            self.__cur.execute(f"SELECT * FROM users WHERE email = '{email}' LIMIT 1")
+            res = self.__cur.fetchone()
+            if not res:
+                print("Пользователь не найден")
+                return False
+
+            return True
+        except sqlite3.Error as e:
+            print(f"Ошибка при получении информации о пользователе из БД {e}")
+
+        return False
