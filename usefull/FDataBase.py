@@ -29,7 +29,7 @@ class FDataBase:
                 print("Пользователь не найден")
                 return False
 
-            return True
+            return res
         except sqlite3.Error as e:
             print(f"Ошибка при получении информации о пользователе из БД {e}")
 
@@ -102,7 +102,7 @@ class FDataBase:
                 print("Пользователь не найден")
                 return False
 
-            return True
+            return res
         except sqlite3.Error as e:
             print(f"Ошибка при получении информации о пользователе из БД {e}")
 
