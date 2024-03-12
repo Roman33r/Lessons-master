@@ -87,7 +87,7 @@ class FDataBase:
                 print("Такой пользователь уже есть")
                 return False
             tm = math.floor(time.time())
-            self.__cur.execute("INSERT INTO users VALUES(NULL,?,?,?,?)",(name,email,hpsw,tm))
+            self.__cur.execute("INSERT INTO users VALUES(NULL,?,?,?,NULL,?)",(name,email,hpsw,tm))
             self.__db.commit()
         except sqlite3.Error as e:
             print("Ошибка добавления в бд"+ str(e))
@@ -107,3 +107,16 @@ class FDataBase:
             print(f"Ошибка при получении информации о пользователе из БД {e}")
 
         return False
+
+    def updateUserAvatar(self, img, user_id):
+        if not img:
+            return False
+
+        try:
+            binary = sqlite3.Binary(img)
+            self.__cur.execute(f"UPDATE users SET avatar = ? WHERE id = ?", (binary, user_id))
+            self.__db.commit()
+        except sqlite3.Error as e:
+            print("Ошибка обновления аватара" + str(e))
+            return False
+        return True
