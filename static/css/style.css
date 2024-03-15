@@ -159,3 +159,12 @@ ul.profile-info{
 ul.profile-info li{
   margin: 10px 0px 0px 0px;
 }
+
+.form-contact .invalid{
+  display: inline-block;
+  background-color: #ff9898;
+}
+
+.form-contact .invalid-feedback{
+  color: #CC0000;
+}
