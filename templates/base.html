@@ -19,6 +19,7 @@
         {% for el in menu -%}
             <a href="{{el.url}}">{{el.title}}</a>
         {% endfor -%}
+        <a href="{{url_for('admin.index')}}">Админка</a>
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
       </a>

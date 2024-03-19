@@ -2,6 +2,23 @@
 
 {% block content%}
 {{super()}}
-<h1>Главная страница</h1>
-{% endblock %}
 
+
+<div class="container">
+  <h1>Главная страница</h1>
+  <div class="row justify-content-center">
+    {% for p in list %}
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card mt-5" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{p.title}}</h5>
+          <p class="card-text">{{ p.text[:50] | striptags}}</p>
+          <a href="{{url_for('showPost', alias=p.url)}}" class="card-link">Card link</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
